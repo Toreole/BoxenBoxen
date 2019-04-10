@@ -24,18 +24,21 @@ public class CameraController : MonoBehaviour
         distance = Mathf.Clamp(Vector3.Distance(centre.position, transform.position), minDistance, 100);
     }
 
-    // Update is called once per frame
+    //TODO: should be nicer, no more center shenanigans. better camera angle. follow a target at a distance.
     void Update()
     {
-        centre.position = MeanPosition;
+        centre.position = Vector3.Lerp(centre.position, MeanPosition, 0.05f);
 
         //smooth out rotation a little.
-        var forward = (boxA.position - boxB.position).normalized;
+        var forward = (boxA.position - boxB.position);
+        forward.y = 0;
+        forward.Normalize();
+
         var tRot = Quaternion.LookRotation(forward, Vector3.up);
-        centre.rotation = Quaternion.Lerp(centre.rotation, tRot, 0.2f);
+        centre.rotation = Quaternion.Lerp(centre.rotation, tRot, 0.1f);
 
-        distance = Mathf.Clamp(Vector3.Distance(boxA.position, boxB.position), minDistance, 100);
+        distance = Mathf.Clamp(Vector3.Distance(boxA.position, boxB.position), minDistance, Mathf.Infinity);
 
-        transform.position = centre.position - transform.forward * distance;
+        transform.position = Vector3.Lerp(transform.position, centre.position - transform.forward * distance, 0.2f);
     }
 }

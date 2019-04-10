@@ -56,10 +56,17 @@ public class BoxController : MonoBehaviour
     /// <summary>
     /// all physics here please
     /// </summary>
+    //TODO: fix movement
     void FixedUpdate()
     {
         var movement = (transform.forward * xInput + transform.right * yInput).normalized * speed;
-        movement.y += body.velocity.y;
+        //movement.y += body.velocity.y;
         body.AddForce(movement);
+    }
+
+    public void Damage(float dmg)
+    {
+        health -= dmg;
+        healthSlider.value = health;
     }
 }
