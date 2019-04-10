@@ -28,7 +28,11 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         centre.position = MeanPosition;
-        centre.forward = (boxA.position - boxB.position).normalized;
+
+        //smooth out rotation a little.
+        var forward = (boxA.position - boxB.position).normalized;
+        var tRot = Quaternion.LookRotation(forward, Vector3.up);
+        centre.rotation = Quaternion.Lerp(centre.rotation, tRot, 0.2f);
 
         distance = Mathf.Clamp(Vector3.Distance(boxA.position, boxB.position), minDistance, 100);
 

@@ -60,6 +60,6 @@ public class BoxController : MonoBehaviour
     {
         var movement = (transform.forward * xInput + transform.right * yInput).normalized * speed;
         movement.y += body.velocity.y;
-        body.velocity = movement;
+        body.AddForce(movement);
     }
 }
