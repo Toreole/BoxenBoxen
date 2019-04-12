@@ -98,7 +98,7 @@ public class BoxController : MonoBehaviour
         damageAudioSource.clip = takeDamage;
 
         movementAudioSource = gameObject.AddComponent<AudioSource>();
-        movementAudioSource.loop = true;
+        movementAudioSource.loop = false;
         movementAudioSource.playOnAwake = false;
         movementAudioSource.clip = movement;
     }
@@ -111,7 +111,6 @@ public class BoxController : MonoBehaviour
         if (!isActive || isDashing)
             return;
         GetInput();
-        UpdateMovementAudio();
         if(Mathf.Abs(xDash) > 1.5f)
         {
             StartCoroutine(DoDash(orientation.right * xDash));
@@ -124,21 +123,6 @@ public class BoxController : MonoBehaviour
             Punch();
     }
 
-    void UpdateMovementAudio()
-    {
-        var velocity = body.velocity.magnitude;
-        if(!isMoving && velocity > 0.05f)
-        {
-            isMoving = true;
-            movementAudioSource.Play();
-        }
-        else if(isMoving && velocity < 0.05f)
-        {
-            isMoving = false;
-            movementAudioSource.Pause();
-        }
-    }
-
     void GetInput()
     {
         xInput = Input.GetAxis(horizontal);
@@ -147,12 +131,12 @@ public class BoxController : MonoBehaviour
         if (Input.GetButtonDown(blockButton))
         {
             foreach (var fist in fists)
-                fist.transform.Rotate(new Vector3(0f, -15f, 0f));
+                fist.transform.Rotate(new Vector3(0f, -90f, 0f));
         }
         else if (Input.GetButtonUp(blockButton))
         {
             foreach (var fist in fists)
-                fist.transform.Rotate(new Vector3(0f, 15f, 0f));
+                fist.transform.Rotate(new Vector3(0f, 90f, 0f));
         }
         punch = Input.GetButtonDown(punchButton) && canPunch && !block;
 
@@ -187,6 +171,7 @@ public class BoxController : MonoBehaviour
     //Actually dash
     IEnumerator DoDash(Vector3 direction)
     {
+        movementAudioSource.Play();
         direction.Normalize();
         canDash = false;
         isDashing = true;
@@ -214,7 +199,6 @@ public class BoxController : MonoBehaviour
         if (!isActive || isDashing)
             return;
         var movement = (orientation.forward * zInput + orientation.right * xInput).normalized * moveSpeed * Time.fixedDeltaTime;
-        //movement.y += body.velocity.y;
         if (block)
             movement *= blockSpeedMultiplier;
         body.velocity += movement;

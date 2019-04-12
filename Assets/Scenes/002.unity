@@ -2633,7 +2633,7 @@ MonoBehaviour:
   vertical: VerticalA
   punchButton: PunchA
   blockButton: BlockA
-  moveSpeed: 5
+  moveSpeed: 6
   dashTimeframe: 0.15
   dashDistance: 1
   dashCooldown: 2
@@ -14467,7 +14467,7 @@ MonoBehaviour:
   vertical: VerticalB
   punchButton: PunchB
   blockButton: BlockB
-  moveSpeed: 5
+  moveSpeed: 6
   dashTimeframe: 0.15
   dashDistance: 1
   dashCooldown: 2
@@ -15552,36 +15552,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7114365853824036468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7114365853824036474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500c07f5e486c214b9c05b98c6936caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontal: HorizontalA
-  vertical: VerticalA
-  punchButton: PunchA
-  blockButton: BlockA
-  moveSpeed: 5
-  dashTimeframe: 0.15
-  dashDistance: 1
-  dashCooldown: 2
-  health: 50
-  maxHealth: 50
-  attackDamage: 10
-  attackSpeed: 1.5
-  knockBackStrength: 3
-  blockDamageMultiplier: 0.3
-  blockSpeedMultiplier: 0.7
-  takeDamage: {fileID: 8300000, guid: 823a59cf894c32343a483e09fe56a212, type: 3}
-  movement: {fileID: 8300000, guid: d8ec750336a7f1340953bf38b88211b9, type: 3}
-  healthSlider: {fileID: 7114365853240238843}
 --- !u!54 &7114365853824036469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15624,7 +15594,6 @@ GameObject:
   - component: {fileID: 1853587443761563346}
   - component: {fileID: 7114365853824036469}
   - component: {fileID: 7114365853824036471}
-  - component: {fileID: 7114365853824036468}
   m_Layer: 0
   m_Name: _CharacterA
   m_TagString: Untagged
