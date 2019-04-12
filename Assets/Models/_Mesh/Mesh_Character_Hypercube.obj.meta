@@ -3,14 +3,14 @@ guid: 9b7a69667ea72ee4c9fb25b4d5537944
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Hypercube
+    100000: BottomSquare
     100002: //RootNode
-    400000: Hypercube
+    400000: BottomSquare
     400002: //RootNode
-    2100000: HypercubeMat
-    2300000: Hypercube
-    3300000: Hypercube
-    4300000: Hypercube
+    2100000: BottomSquareMat
+    2300000: BottomSquare
+    3300000: BottomSquare
+    4300000: BottomSquare
   externalObjects: {}
   materials:
     importMaterials: 1
