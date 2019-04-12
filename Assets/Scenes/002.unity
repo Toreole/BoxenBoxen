@@ -14478,7 +14478,7 @@ MonoBehaviour:
   knockBackStrength: 3
   blockDamageMultiplier: 0.3
   blockSpeedMultiplier: 0.7
-  takeDamage: {fileID: 8300000, guid: 823a59cf894c32343a483e09fe56a212, type: 3}
+  takeDamage: {fileID: 8300000, guid: a864e27a47854fa40ad9727ce7b187fe, type: 3}
   movement: {fileID: 8300000, guid: d8ec750336a7f1340953bf38b88211b9, type: 3}
   healthSlider: {fileID: 7114365853551905749}
 --- !u!54 &7114365853017705838
