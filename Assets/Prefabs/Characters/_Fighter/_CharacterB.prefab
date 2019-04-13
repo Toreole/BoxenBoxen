@@ -266,7 +266,7 @@ MonoBehaviour:
   blockButton: BlockB
   moveSpeed: 5
   dashTimeframe: 0.15
-  dashDistance: 1
+  dashDistance: 1.5
   dashCooldown: 2
   health: 50
   maxHealth: 50
