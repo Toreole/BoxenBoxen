@@ -198,10 +198,14 @@ public class BoxController : MonoBehaviour
     {
         if (!isActive || isDashing)
             return;
-        var movement = (orientation.forward * zInput + orientation.right * xInput).normalized * moveSpeed * Time.fixedDeltaTime;
+        if (Mathf.Approximately(xInput, 0f) && Mathf.Approximately(zInput, 0f))
+            return;
+        var direction = (orientation.forward * zInput + orientation.right * xInput).normalized;
+        var oldDirection = body.velocity.normalized;
+        var movement = Vector3.Lerp(oldDirection, direction, 0.5f).normalized * moveSpeed;
         if (block)
             movement *= blockSpeedMultiplier;
-        body.velocity += movement;
+        body.velocity = movement;
         if(body.velocity.magnitude > 0.05f && !block)
         {
             body.MoveRotation(Quaternion.Lerp(body.rotation, Quaternion.LookRotation(body.velocity.normalized, Vector3.up), 0.5f));
